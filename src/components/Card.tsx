@@ -5,6 +5,7 @@ interface CardProps {
     url: string;
     title: string;
     preferiti: boolean;
+    descrizione: string,
     onPreferitiClick: () => void;
 }
 
@@ -41,7 +42,7 @@ const Preferiti = styled.p<CardPreferita>(({preferiti}) => ({
     cursor: 'pointer',
 }))
 
-function Card({url, title, preferiti,onPreferitiClick}: CardProps): JSX.Element{
+function Card({url, title, preferiti, descrizione, onPreferitiClick}: CardProps): JSX.Element{
     return(
         <>
             <ContainerCard>
@@ -49,6 +50,7 @@ function Card({url, title, preferiti,onPreferitiClick}: CardProps): JSX.Element{
                     <Image src={url}></Image>
                 </ContainerImage>
                     <p><b>{title}</b></p>
+                    <p>{descrizione}</p>
                     <Preferiti onClick={onPreferitiClick} preferiti={preferiti}>♥</Preferiti>
             </ContainerCard>
         </>

@@ -10,6 +10,7 @@ interface CardProps{
     title: string,
     url: string,
     preferiti: boolean,
+    descrizione: string
 }
 
 interface ButtonProp{
@@ -41,11 +42,21 @@ const Input = styled.input(() => ({
     padding: '10px 10px',
 }));
 
-const ButtonContainer = styled.div(() => ({
+const Textarea = styled.textarea(() => ({
+    width: '425px',
+    padding: '10px',
+    marginBottom: '20px', // Aggiungi margine superiore
+    '@media (max-width: 450px)': {
+        width:'50%'
+    },
+}));
+
+const ButtonAndTextareaContainer = styled.div(() => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    marginBottom: '50px'
+    marginBottom: '50px',
+    flexDirection: 'column',
 }))
 
 const Button = styled.button<ButtonProp>(({disabled}) => ({
@@ -70,7 +81,8 @@ function Form({addCard}: FormProps): JSX.Element{
     
     const[newTitle, setTitle] = useState<string>("");
     const[newUrl, setUrl] = useState<string>("");
-    const [isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+    const[isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
+    const[description, setDescription] = useState<string>("")
 
     function handleCreateCard(){
         const newCard: CardProps = {
@@ -78,23 +90,25 @@ function Form({addCard}: FormProps): JSX.Element{
             title: newTitle,
             url: newUrl,
             preferiti: false,
+            descrizione: description,
         }
         addCard(newCard);
         setTitle("");
         setUrl("");
+        setDescription("");
         setIsButtonDisabled(true);
     }
 
     function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>){
         const value = e.target.value;
         setTitle(value);
-        setIsButtonDisabled(!value || !newUrl)
+        setIsButtonDisabled(!value || !newUrl || !description)
     }
 
     function handleUrlChange(e: React.ChangeEvent<HTMLInputElement>){
         const value = e.target.value;
         setUrl(e.target.value);
-        setIsButtonDisabled(!value || !isValidUrl(value))
+        setIsButtonDisabled(!value || !isValidUrl(value) || !description)
     }
 
     function isValidUrl(url: string): boolean {
@@ -104,6 +118,12 @@ function Form({addCard}: FormProps): JSX.Element{
         } catch {
             return false;
         }
+    }
+
+    function handleDescriptionChange(e: React.ChangeEvent<HTMLTextAreaElement>){
+        const value = e.target.value;
+        setDescription(value);
+        setIsButtonDisabled(!value || !newUrl || !newTitle)
     }
 
     return (
@@ -126,9 +146,15 @@ function Form({addCard}: FormProps): JSX.Element{
             />
         </InputContainer>
         </ContainerForm>
-        <ButtonContainer>
+        <ButtonAndTextareaContainer>
+            <Textarea 
+                placeholder="Inserisci una descrizione (max 30 caratteri)"
+                value={description}
+                onChange={handleDescriptionChange}
+                maxLength={30}
+            />
             <Button onClick={handleCreateCard} disabled={isButtonDisabled}>Crea</Button>
-        </ButtonContainer>
+        </ButtonAndTextareaContainer>
     </>
     );
 }

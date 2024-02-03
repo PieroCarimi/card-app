@@ -7,6 +7,7 @@ interface CardProps {
     url: string;
     title: string;
     preferiti: boolean;
+    descrizione: string
 }
 
 const Grid = styled.div(() => ({
@@ -37,7 +38,7 @@ function Preferiti(): JSX.Element{
     <>
         <Grid>
             {cards.filter(card => card.preferiti === true).map(card =>(
-                    <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
+                    <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} descrizione={card.descrizione} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
             ))}
         </Grid>
     </>
