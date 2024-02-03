@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home';
+import Navbar from './components/Navbar';
+import Preferiti from './components/Preferiti'
+
+
 
 function App() {
+  const pageLocalStorage = localStorage.getItem("page") ?? "Home";
+  const[currentPage, setCurrentPage] = useState<string>(pageLocalStorage)
+
+  function handlePageChange(page: string) {
+    setCurrentPage(page);
+    localStorage.setItem("page", page);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar handlePageChange={handlePageChange} currentPage={currentPage}></Navbar>
+      {currentPage === 'Home' && <Home />}
+      {currentPage === 'Preferiti' && <Preferiti />}
+    </>
   );
 }
 
