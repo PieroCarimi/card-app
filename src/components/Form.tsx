@@ -38,7 +38,7 @@ const Input = styled.input(() => ({
 const Textarea = styled.textarea(() => ({
     width: '425px',
     padding: '10px',
-    marginBottom: '20px', // Aggiungi margine superiore
+    marginBottom: '20px',
     '@media (max-width: 450px)': {
         width:'50%'
     },
@@ -69,6 +69,16 @@ const Button = styled.button<ButtonProp>(({disabled}) => ({
         }
     })
 }));
+
+function isValidUrl(url: string): boolean {
+    try{
+        const imageURL = new URL(url);
+        const pathname = imageURL.pathname.toLowerCase();
+        return pathname.includes('jpg') || pathname.includes('jpeg') || pathname.includes('png') || pathname.includes('gif') || pathname.includes('image') || pathname.includes('images');
+    } catch {
+        return false;
+    }
+}
 
 function Form({addCard}: FormProps): JSX.Element{
     
@@ -102,16 +112,6 @@ function Form({addCard}: FormProps): JSX.Element{
         const value = e.target.value;
         setUrl(e.target.value);
         setIsButtonDisabled(!value || !isValidUrl(value) || !description)
-    }
-
-    function isValidUrl(url: string): boolean {
-        try{
-            const imageURL = new URL(url);
-            const pathname = imageURL.pathname.toLowerCase();
-            return pathname.includes('jpg') || pathname.includes('jpeg') || pathname.includes('png') || pathname.includes('gif') || pathname.includes('image') || pathname.includes('images');
-        } catch {
-            return false;
-        }
     }
 
     function handleDescriptionChange(e: React.ChangeEvent<HTMLTextAreaElement>){

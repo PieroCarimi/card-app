@@ -47,10 +47,10 @@ const StyledH3 = styled.h3(() => ({
 function Navbar({ handlePageChange, currentPage }: NavbarProps): JSX.Element {
     return (
         <>
-        <ContainerNavbar>
-            <StyledDivHome currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Home")}>HOME</StyledH3></StyledDivHome>
-            <StyledDivPreferiti currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Preferiti")}>PREFERITI</StyledH3></StyledDivPreferiti>
-        </ContainerNavbar>
+            <ContainerNavbar>
+                <StyledDivHome currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Home")}>HOME</StyledH3></StyledDivHome>
+                <StyledDivPreferiti currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Preferiti")}>PREFERITI</StyledH3></StyledDivPreferiti>
+            </ContainerNavbar>
         </>
     );
 }
