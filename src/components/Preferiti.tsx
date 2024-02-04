@@ -31,7 +31,7 @@ function Preferiti(): JSX.Element{
     <>
         <Grid>
             {cards.filter(card => card.preferiti === true).map(card =>(
-                    <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} descrizione={card.descrizione} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
+                <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} descrizione={card.descrizione} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
             ))}
         </Grid>
     </>

@@ -16,11 +16,10 @@ interface CardPreferita{
 const ContainerCard = styled.div(() => ({
     width: '250px',
     height: '350px',
-    //marginBottom: '75px',
     boxShadow: '10px 10px 15px 5px grey',
-    display: 'flex', // Aggiunto per centrare l'elemento ContainerImage
+    display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center', // Aggiunto per centrare l'elemento ContainerImage
+    justifyContent: 'center',
     alignItems: 'center'
 }))
 
