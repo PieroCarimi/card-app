@@ -9,7 +9,7 @@ function App() {
   const pageLocalStorage = localStorage.getItem("page") ?? "Home";
   const[currentPage, setCurrentPage] = useState<string>(pageLocalStorage)
 
-  function handlePageChange(page: string) {
+  function handlePageChange(page: string): void {
     setCurrentPage(page);
     localStorage.setItem("page", page);
   };

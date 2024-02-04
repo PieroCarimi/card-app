@@ -71,23 +71,27 @@ const Button = styled.button<ButtonProp>(({disabled}) => ({
 }));
 
 function isValidUrl(url: string): boolean {
-    try{
+    try {
         const imageURL = new URL(url);
         const pathname = imageURL.pathname.toLowerCase();
+        
         return pathname.includes('jpg') || pathname.includes('jpeg') || pathname.includes('png') || pathname.includes('gif') || pathname.includes('image') || pathname.includes('images');
     } catch {
         return false;
     }
 }
 
+
 function Form({addCard}: FormProps): JSX.Element{
     
     const[newTitle, setTitle] = useState<string>("");
     const[newUrl, setUrl] = useState<string>("");
-    const[isButtonDisabled, setIsButtonDisabled] = useState<boolean>(true);
     const[description, setDescription] = useState<string>("")
 
-    function handleCreateCard(){
+    const isUrlValid = isValidUrl(newUrl);
+    const isButtonDisabled = !newTitle || !newUrl || !description || !isUrlValid;
+
+    function handleCreateCard(): void{
         const newCard: CardProps = {
             id: Date.now(),
             title: newTitle,
@@ -99,25 +103,21 @@ function Form({addCard}: FormProps): JSX.Element{
         setTitle("");
         setUrl("");
         setDescription("");
-        setIsButtonDisabled(true);
     }
 
-    function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>){
+    function handleTitleChange(e: React.ChangeEvent<HTMLInputElement>): void{
         const value = e.target.value;
         setTitle(value);
-        setIsButtonDisabled(!value || !newUrl || !description)
     }
 
-    function handleUrlChange(e: React.ChangeEvent<HTMLInputElement>){
+    function handleUrlChange(e: React.ChangeEvent<HTMLInputElement>): void{
         const value = e.target.value;
         setUrl(e.target.value);
-        setIsButtonDisabled(!value || !isValidUrl(value) || !description)
     }
 
-    function handleDescriptionChange(e: React.ChangeEvent<HTMLTextAreaElement>){
+    function handleDescriptionChange(e: React.ChangeEvent<HTMLTextAreaElement>): void{
         const value = e.target.value;
         setDescription(value);
-        setIsButtonDisabled(!value || !newUrl || !newTitle)
     }
 
     return (

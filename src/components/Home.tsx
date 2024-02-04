@@ -21,13 +21,13 @@ function Home(): JSX.Element{
         return cachedCards ? JSON.parse(cachedCards) : [];
     });
 
-    const addCard = (newCard: CardProps) => {
+    function addCard(newCard: CardProps): void {
         const updatedCards = [...cards, newCard];
         setCards(updatedCards);
         localStorage.setItem("cards", JSON.stringify(updatedCards));
     };
 
-    function handlePreferitiClick(id: number){
+    function handlePreferitiClick(id: number): void{
         const newCards = cards.map(card =>
             card.id === id ? {...card, preferiti: !card.preferiti} : card);
             setCards(newCards);

@@ -20,7 +20,7 @@ function Preferiti(): JSX.Element{
         return cachedCards ? JSON.parse(cachedCards) : [];
     });
 
-    function handlePreferitiClick(id: number){
+    function handlePreferitiClick(id: number): void{
         const newCards = cards.map(card =>
             card.id === id ? {...card, preferiti: !card.preferiti} : card);
             setCards(newCards);
