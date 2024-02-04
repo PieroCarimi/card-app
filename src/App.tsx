@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
+import React, { Suspense, lazy, useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import Preferiti from './components/Preferiti'
 
-
+const Preferiti = lazy(() => import('./components/Preferiti'))
 
 function App() {
   const pageLocalStorage = localStorage.getItem("page") ?? "Home";
@@ -19,8 +17,10 @@ function App() {
   return (
     <>
       <Navbar handlePageChange={handlePageChange} currentPage={currentPage}></Navbar>
-      {currentPage === 'Home' && <Home />}
-      {currentPage === 'Preferiti' && <Preferiti />}
+      <Suspense fallback={<div>Loading...</div>}>
+        {currentPage === 'Home' && <Home />}
+        {currentPage === 'Preferiti' && <Preferiti />}
+      </Suspense>
     </>
   );
 }
