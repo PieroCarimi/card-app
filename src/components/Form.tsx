@@ -1,16 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+import {CardProps} from "../interfaces/interfaces"
 
 interface FormProps {
     addCard: (newCard: CardProps) => void;
-}
-
-interface CardProps{
-    id: number,
-    title: string,
-    url: string,
-    preferiti: boolean,
-    descrizione: string
 }
 
 interface ButtonProp{

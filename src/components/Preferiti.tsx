@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
-
-interface CardProps {
-    id: number;
-    url: string;
-    title: string;
-    preferiti: boolean;
-    descrizione: string
-}
+import {CardProps} from "../interfaces/interfaces"
 
 const Grid = styled.div(() => ({
     margin:'100px',

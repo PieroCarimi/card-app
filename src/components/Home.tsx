@@ -1,15 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Form from "./Form";
 import Card from "./Card";
 import styled from "styled-components";
-
-interface CardProps {
-    id: number;
-    url: string;
-    title: string;
-    preferiti: boolean;
-    descrizione: string;
-}
+import {CardProps} from "../interfaces/interfaces"
 
 const Grid = styled.div(() => ({
     margin:'100px',
@@ -28,10 +21,6 @@ function Home(): JSX.Element{
         return cachedCards ? JSON.parse(cachedCards) : [];
     });
 
-    /*const cachedCard = localStorage.getItem("card") ?
-        JSON.parse(localStorage.getItem("card")!):
-        [];*/
-
     const addCard = (newCard: CardProps) => {
         const updatedCards = [...cards, newCard];
         setCards(updatedCards);
@@ -45,7 +34,6 @@ function Home(): JSX.Element{
         localStorage.setItem("cards", JSON.stringify(newCards));
     }
     
-
     return (
     <>
         <Form addCard={addCard}/>
