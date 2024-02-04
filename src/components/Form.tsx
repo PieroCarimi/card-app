@@ -113,8 +113,9 @@ function Form({addCard}: FormProps): JSX.Element{
 
     function isValidUrl(url: string): boolean {
         try{
-            new URL(url);
-            return true;
+            const imageURL = new URL(url);
+            const pathname = imageURL.pathname.toLowerCase();
+            return pathname.includes('jpg') || pathname.includes('jpeg') || pathname.includes('png') || pathname.includes('gif') || pathname.includes('image') || pathname.includes('images');
         } catch {
             return false;
         }
