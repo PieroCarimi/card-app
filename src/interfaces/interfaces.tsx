@@ -5,3 +5,7 @@ export interface CardProps {
     preferiti: boolean;
     descrizione: string;
 }
+
+export interface TContext {
+    currentPage : string;
+}

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { AppContext } from "../Context";
 
 interface NavbarProps {
     handlePageChange: (page: string) => void;
@@ -44,7 +45,9 @@ const StyledH3 = styled.h3(() => ({
     cursor: 'pointer',
 }))
 
-function Navbar({ handlePageChange, currentPage }: NavbarProps): JSX.Element {
+function Navbar({ handlePageChange }: NavbarProps): JSX.Element {
+    const context = useContext(AppContext);
+    const { currentPage } = context
     return (
         <>
             <ContainerNavbar>
