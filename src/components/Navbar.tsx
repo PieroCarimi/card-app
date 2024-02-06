@@ -32,8 +32,8 @@ const StyledDivHome = styled.div<StyledH3Props>(({ currentPage }) => ({
     display: 'flex'
 }));
 
-const StyledDivPreferiti = styled.div<StyledH3Props>(({ currentPage }) => ({
-    fontSize: (currentPage === "Preferiti") ? '1.875em' :'1.2em',
+const StyledDivFavorites = styled.div<StyledH3Props>(({ currentPage }) => ({
+    fontSize: (currentPage === "Favorites") ? '1.875em' :'1.2em',
     marginLeft: '20px',
     marginRight: '20px',
     alignItems: 'center',
@@ -52,7 +52,7 @@ function Navbar({ handlePageChange }: NavbarProps): JSX.Element {
         <>
             <ContainerNavbar>
                 <StyledDivHome currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Home")}>HOME</StyledH3></StyledDivHome>
-                <StyledDivPreferiti currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Preferiti")}>PREFERITI</StyledH3></StyledDivPreferiti>
+                <StyledDivFavorites currentPage={currentPage}><StyledH3 onClick={() => handlePageChange("Favorites")}>PREFERITI</StyledH3></StyledDivFavorites>
             </ContainerNavbar>
         </>
     );

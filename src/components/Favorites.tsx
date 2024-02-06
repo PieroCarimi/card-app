@@ -14,15 +14,15 @@ const Grid = styled.div({
     placeItems: 'center',
 })
 
-function Preferiti(): JSX.Element{
+function Favorites(): JSX.Element{
     const [cards, setCards] = useState<CardProps[]>(() => {
         const cachedCards = localStorage.getItem("cards");
         return cachedCards ? JSON.parse(cachedCards) : [];
     });
 
-    function handlePreferitiClick(id: number): void{
+    function handleFavoritesClick(id: number): void{
         const newCards = cards.map(card =>
-            card.id === id ? {...card, preferiti: !card.preferiti} : card);
+            card.id === id ? {...card, favorites: !card.favorites} : card);
             setCards(newCards);
         localStorage.setItem("cards", JSON.stringify(newCards));
     }
@@ -30,12 +30,12 @@ function Preferiti(): JSX.Element{
     return (
     <>
         <Grid>
-            {cards.filter(card => card.preferiti === true).map(card =>(
-                <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} descrizione={card.descrizione} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
+            {cards.filter(card => card.favorites === true).map(card =>(
+                <Card key={card.id} url={card.url} title={card.title} favorites={card.favorites} description={card.description} onFavoritesClick={() => handleFavoritesClick(card.id)}/>
             ))}
         </Grid>
     </>
     );
 }
 
-export default Preferiti;
+export default Favorites;

@@ -4,13 +4,13 @@ import styled from "styled-components";
 interface CardProps {
     url: string;
     title: string;
-    preferiti: boolean;
-    descrizione: string,
-    onPreferitiClick: () => void;
+    favorites: boolean;
+    description: string,
+    onFavoritesClick: () => void;
 }
 
 interface CardPreferita{
-    preferiti: boolean;
+    favorites: boolean;
 }
 
 const ContainerCard = styled.div({
@@ -36,12 +36,12 @@ const Image = styled.img({
     objectFit: 'scale-down',
 })
 
-const Preferiti = styled.p<CardPreferita>(({preferiti}) => ({
-    color: preferiti ? "red" : "black",
+const Favorites = styled.p<CardPreferita>(({favorites}) => ({
+    color: favorites ? "red" : "black",
     cursor: 'pointer',
 }))
 
-function Card({url, title, preferiti, descrizione, onPreferitiClick}: CardProps): JSX.Element{
+function Card({url, title, favorites, description, onFavoritesClick}: CardProps): JSX.Element{
     return(
         <>
             <ContainerCard>
@@ -49,8 +49,8 @@ function Card({url, title, preferiti, descrizione, onPreferitiClick}: CardProps)
                     <Image src={url}></Image>
                 </ContainerImage>
                     <p><b>{title}</b></p>
-                    <p>{descrizione}</p>
-                    <Preferiti onClick={onPreferitiClick} preferiti={preferiti}>♥</Preferiti>
+                    <p>{description}</p>
+                    <Favorites onClick={onFavoritesClick} favorites={favorites}>♥</Favorites>
             </ContainerCard>
         </>
     )

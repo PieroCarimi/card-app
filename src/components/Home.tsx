@@ -27,9 +27,9 @@ function Home(): JSX.Element{
         localStorage.setItem("cards", JSON.stringify(updatedCards));
     };
 
-    function handlePreferitiClick(id: number): void{
+    function handleFavoritesClick(id: number): void{
         const newCards = cards.map(card =>
-            card.id === id ? {...card, preferiti: !card.preferiti} : card);
+            card.id === id ? {...card, favorites: !card.favorites} : card);
             setCards(newCards);
         localStorage.setItem("cards", JSON.stringify(newCards));
     }
@@ -39,7 +39,7 @@ function Home(): JSX.Element{
         <Form addCard={addCard}/>
         <Grid>
             {cards.map((card: CardProps) => (
-                <Card key={card.id} url={card.url} title={card.title} preferiti={card.preferiti} descrizione={card.descrizione} onPreferitiClick={() => handlePreferitiClick(card.id)}/>
+                <Card key={card.id} url={card.url} title={card.title} favorites={card.favorites} description={card.description} onFavoritesClick={() => handleFavoritesClick(card.id)}/>
             ))}
         </Grid>
     </>

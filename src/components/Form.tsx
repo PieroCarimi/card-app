@@ -96,8 +96,8 @@ function Form({addCard}: FormProps): JSX.Element{
             id: Date.now(),
             title: newTitle,
             url: newUrl,
-            preferiti: false,
-            descrizione: description,
+            favorites: false,
+            description: description,
         }
         addCard(newCard);
         setTitle("");

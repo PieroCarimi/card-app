@@ -4,7 +4,7 @@ import Home from './components/Home';
 import Navbar from './components/Navbar';
 import { AppProvider } from './Context';
 
-const Preferiti = lazy(() => import('./components/Preferiti'))
+const Favorites = lazy(() => import('./components/Favorites'))
 
 function App() {
   const pageLocalStorage = localStorage.getItem("page") ?? "Home";
@@ -20,7 +20,7 @@ function App() {
       <Navbar handlePageChange={handlePageChange} currentPage={currentPage}></Navbar>
       <Suspense fallback={<div>Loading...</div>}>
         {currentPage === 'Home' && <Home />}
-        {currentPage === 'Preferiti' && <Preferiti />}
+        {currentPage === 'Favorites' && <Favorites />}
       </Suspense>
     </AppProvider>
   );

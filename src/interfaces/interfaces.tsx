@@ -2,8 +2,8 @@ export interface CardProps {
     id: number;
     url: string;
     title: string;
-    preferiti: boolean;
-    descrizione: string;
+    favorites: boolean;
+    description: string;
 }
 
 export interface TContext {
