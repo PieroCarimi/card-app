@@ -11,7 +11,7 @@ interface StyledH3Props {
     currentPage: string;
 }
 
-const ContainerNavbar = styled.div(() => ({
+const ContainerNavbar = styled.div({
     display: 'flex',
     justifyContent: 'end',
     marginLeft: '50px',
@@ -21,7 +21,7 @@ const ContainerNavbar = styled.div(() => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
-}))
+});
 
 const StyledDivHome = styled.div<StyledH3Props>(({ currentPage }) => ({
     fontSize: (currentPage === "Home") ? '1.875em' :'1.2em',
@@ -41,9 +41,9 @@ const StyledDivPreferiti = styled.div<StyledH3Props>(({ currentPage }) => ({
     display: 'flex'
 }));
 
-const StyledH3 = styled.h3(() => ({
+const StyledH3 = styled.h3({
     cursor: 'pointer',
-}))
+});
 
 function Navbar({ handlePageChange }: NavbarProps): JSX.Element {
     const context = useContext(AppContext);

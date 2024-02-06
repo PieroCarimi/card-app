@@ -13,7 +13,7 @@ interface CardPreferita{
     preferiti: boolean;
 }
 
-const ContainerCard = styled.div(() => ({
+const ContainerCard = styled.div({
     width: '250px',
     height: '350px',
     boxShadow: '10px 10px 15px 5px grey',
@@ -21,20 +21,20 @@ const ContainerCard = styled.div(() => ({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
-}))
+})
 
-const ContainerImage = styled.div(() => ({
+const ContainerImage = styled.div({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
     borderBottom: '2px inset',
-}))
+})
 
-const Image = styled.img(() => ({
+const Image = styled.img({
     width: '100%',
     height: '100%',
     objectFit: 'scale-down',
-}))
+})
 
 const Preferiti = styled.p<CardPreferita>(({preferiti}) => ({
     color: preferiti ? "red" : "black",

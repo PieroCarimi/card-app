@@ -10,7 +10,7 @@ interface ButtonProp{
     disabled: boolean,
 }
 
-const ContainerForm = styled.div(() => ({
+const ContainerForm = styled.div({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
@@ -19,38 +19,38 @@ const ContainerForm = styled.div(() => ({
         flexDirection: 'column',
         alignItems: 'center',
     },
-}));
+});
 
-const InputContainer = styled.div(() => ({
+const InputContainer = styled.div({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     margin: '0 20px', // Spazio laterale
     maxWidth: '300px',
-}));
+});
 
-const Input = styled.input(() => ({
+const Input = styled.input({
     width: '100%',
     padding: '10px 10px',
-}));
+});
 
-const Textarea = styled.textarea(() => ({
+const Textarea = styled.textarea({
     width: '425px',
     padding: '10px',
     marginBottom: '20px',
     '@media (max-width: 450px)': {
         width:'50%'
     },
-}));
+});
 
-const ButtonAndTextareaContainer = styled.div(() => ({
+const ButtonAndTextareaContainer = styled.div({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     marginBottom: '50px',
     flexDirection: 'column',
-}))
+});
 
 const Button = styled.button<ButtonProp>(({disabled}) => ({
     padding: '4px 20px',

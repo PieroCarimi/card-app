@@ -3,7 +3,7 @@ import Card from "./Card";
 import styled from "styled-components";
 import {CardProps} from "../interfaces/interfaces"
 
-const Grid = styled.div(() => ({
+const Grid = styled.div({
     margin:'100px',
     marginTop: '100px',
     display: 'grid',
@@ -12,7 +12,7 @@ const Grid = styled.div(() => ({
     columnGap: '150px',
     justifyContent: 'center',
     placeItems: 'center',
-}))
+})
 
 function Preferiti(): JSX.Element{
     const [cards, setCards] = useState<CardProps[]>(() => {
