@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
-import {CardProps} from "../interfaces/interfaces"
+import {CardProps} from "../interfaces/interfaces";
+import { utilityGetCachedCards, utilitySetCachedCards} from "../utilities";
 
 const Grid = styled.div({
     margin:'100px',
@@ -15,16 +16,13 @@ const Grid = styled.div({
 })
 
 function Favorites(): JSX.Element{
-    const [cards, setCards] = useState<CardProps[]>(() => {
-        const cachedCards = localStorage.getItem("cards");
-        return cachedCards ? JSON.parse(cachedCards) : [];
-    });
+    const [cards, setCards] = useState<CardProps[]>(utilityGetCachedCards());
 
     function handleFavoritesClick(id: number): void{
         const newCards = cards.map(card =>
             card.id === id ? {...card, favorites: !card.favorites} : card);
             setCards(newCards);
-        localStorage.setItem("cards", JSON.stringify(newCards));
+            utilitySetCachedCards(newCards);
     }
     
     return (

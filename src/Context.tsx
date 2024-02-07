@@ -9,12 +9,13 @@ type ContextProvider = {
 
 export const AppContext = createContext<TContext>({
     currentPage: "Home",
+    cards: [],
 });
 
 export const AppProvider = ({ children, currentPage }: ContextProvider) => {
 
     return (
-        <AppContext.Provider value={{ currentPage }}>
+        <AppContext.Provider value={{ currentPage, cards:[] }}>
             {children}
         </AppContext.Provider>
     );

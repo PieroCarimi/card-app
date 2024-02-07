@@ -3,6 +3,7 @@ import Form from "./Form";
 import Card from "./Card";
 import styled from "styled-components";
 import {CardProps} from "../interfaces/interfaces"
+import { utilityGetCachedCards, utilitySetCachedCards} from "../utilities";
 
 const Grid = styled.div({
     margin:'100px',
@@ -16,15 +17,12 @@ const Grid = styled.div({
 });
 
 function Home(): JSX.Element{
-    const [cards, setCards] = useState<CardProps[]>(() => {
-        const cachedCards = localStorage.getItem("cards");
-        return cachedCards ? JSON.parse(cachedCards) : [];
-    });
+    const [cards, setCards] = useState<CardProps[]>(utilityGetCachedCards());
 
     function addCard(newCard: CardProps): void {
         const updatedCards = [...cards, newCard];
         setCards(updatedCards);
-        localStorage.setItem("cards", JSON.stringify(updatedCards));
+        utilitySetCachedCards(updatedCards);
     };
 
     function handleFavoritesClick(id: number): void{

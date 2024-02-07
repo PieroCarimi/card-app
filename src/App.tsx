@@ -3,11 +3,12 @@ import './App.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
 import { AppProvider } from './Context';
+import{ utilityGetCachedPage, utilitySetCachedPage } from './utilities'
 
 const Favorites = lazy(() => import('./components/Favorites'))
 
 function App() {
-  const pageLocalStorage = localStorage.getItem("page") ?? "Home";
+  const pageLocalStorage = utilityGetCachedPage();
   const[currentPage, setCurrentPage] = useState<string>(pageLocalStorage)
 
   function handlePageChange(page: string): void {
@@ -16,7 +17,7 @@ function App() {
   };
 
   return (
-    <AppProvider currentPage={pageLocalStorage}>
+    <AppProvider currentPage={currentPage}>
       <Navbar handlePageChange={handlePageChange} currentPage={currentPage}></Navbar>
       <Suspense fallback={<div>Loading...</div>}>
         {currentPage === 'Home' && <Home />}

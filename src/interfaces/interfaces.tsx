@@ -8,4 +8,5 @@ export interface CardProps {
 
 export interface TContext {
     currentPage : string;
+    cards: Array<CardProps>
 }
