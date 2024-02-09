@@ -10,7 +10,7 @@ interface CardProps {
 }
 
 interface CardPreferita{
-    favorites: boolean;
+    $favorites: boolean; //prop transient. Le prop transient sono un modello in styled-components in cui si prefissa il nome della prop con un segno di dollaro ($), e styled-components non passerà queste prop al DOM.
 }
 
 const ContainerCard = styled.div({
@@ -36,8 +36,8 @@ const Image = styled.img({
     objectFit: 'scale-down',
 })
 
-const Favorites = styled.p<CardPreferita>(({favorites}) => ({
-    color: favorites ? "red" : "black",
+const Favorites = styled.p<CardPreferita>(({$favorites}) => ({
+    color: $favorites ? "red" : "black",
     cursor: 'pointer',
 }))
 
@@ -50,7 +50,7 @@ function Card({url, title, favorites, description, onFavoritesClick}: CardProps)
                 </ContainerImage>
                     <p><b>{title}</b></p>
                     <p>{description}</p>
-                    <Favorites onClick={onFavoritesClick} favorites={favorites}>♥</Favorites>
+                    <Favorites onClick={onFavoritesClick} $favorites={favorites}>♥</Favorites>
             </ContainerCard>
         </>
     )

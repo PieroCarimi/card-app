@@ -8,5 +8,6 @@ export interface CardProps {
 
 export interface TContext {
     currentPage : string;
-    cards: Array<CardProps>
+    cards: Array<CardProps>;
+    handlePageChange : (page : string) => void;
 }
