@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode, useState } from "react";
 import { CardProps, TContext } from "./interfaces/interfaces";
-import App from "./App";
-import{ utilityGetCachedCards, utilityGetCachedPage, utilitySetCachedCards, utilitySetCachedPage } from './utilities'
+import{ utilityGetCachedCards, utilityGetCachedPage, utilitySetCachedCards, utilitySetCachedPage } from './utilities';
 
 type ContextProvider = {
     children: React.ReactNode,
@@ -23,7 +22,7 @@ export const AppProvider = ({ children }: ContextProvider) => {
 
     function handlePageChange(page: string): void {
         setCurrentPage(page);
-        localStorage.setItem("page", page);
+        utilitySetCachedPage(page);
     }
 
     function addCard(newCard: CardProps): void {
