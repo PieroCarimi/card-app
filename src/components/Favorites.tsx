@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Card from "./Card";
 import styled from "styled-components";
 import {CardProps} from "../interfaces/interfaces";
-import { utilityGetCachedCards, utilitySetCachedCards} from "../utilities";
+import { AppContext } from "../Context";
 
 const Grid = styled.div({
     margin:'100px',
@@ -16,19 +16,12 @@ const Grid = styled.div({
 })
 
 function Favorites(): JSX.Element{
-    const [cards, setCards] = useState<CardProps[]>(utilityGetCachedCards());
+    const {cards, handleFavoritesClick} = useContext(AppContext);
 
-    function handleFavoritesClick(id: number): void{
-        const newCards = cards.map(card =>
-            card.id === id ? {...card, favorites: !card.favorites} : card);
-            setCards(newCards);
-            utilitySetCachedCards(newCards);
-    }
-    
     return (
     <>
         <Grid>
-            {cards.filter(card => card.favorites === true).map(card =>(
+            {cards.filter((card : CardProps) => card.favorites === true).map(card =>(
                 <Card key={card.id} url={card.url} title={card.title} favorites={card.favorites} description={card.description} onFavoritesClick={() => handleFavoritesClick(card.id)}/>
             ))}
         </Grid>

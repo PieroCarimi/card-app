@@ -43,15 +43,16 @@ const StyledH3 = styled.h3({
 
 function Navbar(): JSX.Element {
     const { currentPage, handlePageChange } = usePage();
+    
     return (
         <>
             <ContainerNavbar>
-            <StyledDivHome $currentPage={currentPage}>
-                <StyledH3 onClick={() => handlePageChange("Home")}>HOME</StyledH3>
-            </StyledDivHome>
-            <StyledDivFavorites $currentPage={currentPage}>
-                <StyledH3 onClick={() => handlePageChange("Favorites")}>PREFERITI</StyledH3>
-            </StyledDivFavorites>
+                <StyledDivHome $currentPage={currentPage}>
+                    <StyledH3 onClick={() => handlePageChange("Home")}>HOME</StyledH3>
+                </StyledDivHome>
+                <StyledDivFavorites $currentPage={currentPage}>
+                    <StyledH3 onClick={() => handlePageChange("Favorites")}>PREFERITI</StyledH3>
+                </StyledDivFavorites>
             </ContainerNavbar>
         </>
     );

@@ -10,4 +10,6 @@ export interface TContext {
     currentPage : string;
     cards: Array<CardProps>;
     handlePageChange : (page : string) => void;
+    addCard : (newCard : CardProps) => void;
+    handleFavoritesClick : (id : number) => void
 }
