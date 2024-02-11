@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { AppContext } from "../Context";
+import { usePage } from "../hooks/usePage";
 
 
 interface StyledH3Props {
@@ -42,7 +42,7 @@ const StyledH3 = styled.h3({
 });
 
 function Navbar(): JSX.Element {
-    const { currentPage, handlePageChange } = useContext(AppContext)
+    const { currentPage, handlePageChange } = usePage();
     return (
         <>
             <ContainerNavbar>

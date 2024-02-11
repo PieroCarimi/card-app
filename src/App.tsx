@@ -2,13 +2,13 @@ import React, { Suspense, lazy, useContext, useState } from 'react';
 import './App.css';
 import Home from './components/Home';
 import Navbar from './components/Navbar';
-import { AppContext, AppProvider } from './Context';
+import { usePage } from './hooks/usePage';
 
 
 const Favorites = lazy(() => import('./components/Favorites'))
 
 function App() {
-  const { currentPage } = useContext(AppContext);
+  const { currentPage } = usePage();
   console.log(currentPage)
   return (
       <>
